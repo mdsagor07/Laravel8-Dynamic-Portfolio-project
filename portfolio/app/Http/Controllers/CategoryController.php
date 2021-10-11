@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Auth;
+use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
+
 
 class CategoryController extends Controller
 {
     public function Allcat()
     {
-        return view('admin.category.index');
+        $allcat=Category::all();
+        return view('admin.category.index',compact('allcat'));
     }
 
     public function Addcat(Request $request)
@@ -17,6 +24,24 @@ class CategoryController extends Controller
             'category_name' => 'required|unique:categories|max:255',
            
         ]);
+
+        // Category::insert([
+        //     'category_name'=>$request->category_name,
+        //     'user_id'=>Auth::user()->id,
+        //     'created_at'=>Carbon::now()
+
+        // ]);
+
+         $category = new Category();
+
+         $category->category_name = $request->category_name;
+        $category->user_id= Auth::user()->id;
+        //dd($request->category_name);
+        $category->save();
+        
+        return redirect()->back()->with('success', 'Add category insert successfully!');
+        
+        
         
 
     }

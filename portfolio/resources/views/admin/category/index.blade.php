@@ -12,8 +12,19 @@
     <div class="container">
      
      <div class="row">
+
          <div class="col-md-8">
+
+       
+
           <div class="card">
+<!-- 
+          @if (session('success'))
+         <div class="alert alert-primary" role="alert">
+         {{ session('success') }}
+         </div>
+        @endif -->
+
               <div class="card-header"> All Category</div>
          
         
@@ -28,12 +39,16 @@
   </thead>
   <tbody>
   @php($i=1)
+
+  @foreach($allcat as $allcat)
     <tr>
-      <th scope="row">{{$i}}</th>
-      <td>fd</td>
-      <td>dd</td>
-      <td>dd</td>
+      <th scope="row">{{$i++}}</th>
+      <td>{{$allcat->user_id}}</td>
+      <td>{{$allcat->category_name}}</td>
+      <td>{{$allcat->created_at}}</td>
     </tr>
+
+    @endforeach
     
    
     
@@ -50,17 +65,14 @@
          
             <div class="card-body">
 
-              <form action="route{{'store.category'}" method="POST">
+              <form action="{{route('store.category')}}" method="POST">
                   @csrf
   <div class="mb-3" >
     <label for="exampleInputEmail1" class="form-label">Category Name</label>
-    <input type="email" name="category_name" class="form-control" 
-    id="exampleInputEmail1" aria-describedby="emailHelp" value="" required>
+    <input type="text" name="category_name" class="form-control" 
+    id="exampleInputEmail1" aria-describedby="emailHelp"  required>
                
-    @error('category_name')
-     <span></span>
-
-    @enderror
+  
 
      </div>
     
