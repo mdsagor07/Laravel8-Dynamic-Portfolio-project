@@ -38,14 +38,14 @@
     </tr>
   </thead>
   <tbody>
-  @php($i=1)
+  <!-- @php($i=1) -->
 
-  @foreach($allcat as $allcat)
+  @foreach($allcat as $allcats)
     <tr>
-      <th scope="row">{{$i++}}</th>
-      <td>{{$allcat->user_id}}</td>
-      <td>{{$allcat->category_name}}</td>
-      <td>{{$allcat->created_at}}</td>
+      <th scope="row">{{$allcat->firstItem()+ $loop->index}}</th>
+      <td>{{$allcats->user_id}}</td>
+      <td>{{$allcats->category_name}}</td>
+      <td>{{$allcats->created_at}}</td>
     </tr>
 
     @endforeach
@@ -54,6 +54,7 @@
     
   </tbody>
 </table>
+{{ $allcat->links() }}
 
          </div>
           </div>
