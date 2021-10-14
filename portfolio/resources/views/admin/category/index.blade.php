@@ -18,12 +18,12 @@
        
 
           <div class="card">
-<!-- 
-          @if (session('success'))
+
+          @if (session('success1'))
          <div class="alert alert-primary" role="alert">
-         {{ session('success') }}
+         {{ session('success1') }}
          </div>
-        @endif -->
+        @endif 
 
               <div class="card-header"> All Category</div>
          
