@@ -44,7 +44,7 @@
     <tr>
       <th scope="row">{{$allcat->firstItem()+ $loop->index}}</th>
       <!-- <td>{{$allcats->user_id}}</td> -->
-      <td>{{$allcats->user->name}}</td>
+      <td>{{$allcats->name}}</td>
       <td>{{$allcats->category_name}}</td>
       <td>{{$allcats->created_at}}</td>
     </tr>
