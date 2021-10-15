@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use app\Models\User;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\CategoryController;
 
 

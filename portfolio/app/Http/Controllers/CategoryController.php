@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use App\Models\Category;
 use Auth;
 use App\Models\User;
@@ -15,8 +16,10 @@ class CategoryController extends Controller
 {
     public function Allcat()
     {
-        //$allcat=Category::all();
-        $allcat = DB::table('categories')->latest()->paginate(5);
+         $allcat=Category::paginate(5);
+         
+         //$allcat = DB::table('categories')->latest()->paginate(5);
+         //$allcat= DB::table('categories')->order_by('created_at', 'desc')->get();
         return view('admin.category.index',compact('allcat'));
     }
 

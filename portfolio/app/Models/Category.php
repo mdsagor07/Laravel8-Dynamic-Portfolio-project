@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 class Category extends Model
 {
     use SoftDeletes;
@@ -14,4 +17,10 @@ class Category extends Model
         'category_name',
         
     ];
+    public function user()
+    {
+        return $this->hasOne(User:: class,'id','user_id');
+    }
+
+   
 }
