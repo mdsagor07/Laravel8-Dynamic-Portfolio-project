@@ -16,12 +16,12 @@ class CategoryController extends Controller
 {
     public function Allcat()
     {
-         $allcat=Category::paginate(5);
+         //$allcat=Category::paginate(5);
          $allcat= DB::table('categories')
          ->join('users','categories.user_id','users.id')
          ->select('categories.*','users.name')
          ->latest()->paginate(5);
-         
+
          //$allcat = DB::table('categories')->latest()->paginate(5);
          //$allcat= DB::table('categories')->order_by('created_at', 'desc')->get();
         return view('admin.category.index',compact('allcat'));
